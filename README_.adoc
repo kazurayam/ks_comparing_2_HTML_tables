@@ -133,16 +133,16 @@ com.kms.katalon.core.exception.StepFailedException: data1 > data2
 
 == Discussion
 
- I introduced several programming techniques.
+I introduced several programming techniques.
 
-class Record to encapsulate data in a row of HTML table
-the Record has getKey() method that makes a combination of CUTOMER+CHANNEL as the key which identifies a row of HTML table uniquely.
-use java.util.TreeMap to make a set of Record objects automatically sorted by the key; the Record class implements int compareTo(Record) method.
-use java.util.Set that provides removeAll() method which performs substitute operation of mathmatical set; the Record class implements boolean equals(Object) method.
+1. class `Record` to encapsulate data in a row of HTML table
+2. the Record has `getKey()` method that makes a combination of CUSTOMER+CHANNEL as the key which identifies a row of HTML table uniquely.
+3. use `java.util.TreeMap` to make a set of Record objects automatically sorted by the key; the Record class implements `int compareTo(Record)` method.
+4. use `java.util.Set` that provides `removeAll()` method which performs substitute operation of mathmatical set; the Record class implements `boolean equals(Object)` method.
 
-Do you think this is unnecessarily complicated? I don’t think so. This sample code is an absolute minimum to solve the problem that was asked to solve. The problem is a difficult one, it deserves this complexity.
+Do you think this is unnecessarily complicated? I do not think so. This sample code is an absolute minimum to solve the problem that was asked to solve. The problem is a difficult one, it deserves this complexity.
 
-However, I think that it is not a good idea to perform such full stack programming in an automated UI tests. I think such full stack programming should be carried out in the unit-tests for the web server app possibly using SQL; or the unit-tests for the JavaScript upon JSON data in the single page web app. I think automated UI test for HTML should NOT be responsible for this layer of problems. 
+However, I think that it is not a good idea to perform such full stack programming in an automated UI tests. I think such full stack programming should be carried out in the unit-tests for the web server app possibly using SQL; or the unit-tests for the JavaScript upon JSON data in the single page web app. I think automated UI test for HTML should NOT be responsible for this layer of problems.
 
 == Conclusion
 
