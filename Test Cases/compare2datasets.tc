@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>compare2datasets</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>83dcbb20-a7a7-4799-adee-112037ca71ea</testCaseGuid>
+   <variable>
+      <defaultValue>[]</defaultValue>
+      <description></description>
+      <id>3e9c1e1e-dc56-4dc2-8049-795026a87635</id>
+      <masked>false</masked>
+      <name>input1</name>
+   </variable>
+   <variable>
+      <defaultValue>[]</defaultValue>
+      <description></description>
+      <id>58e016fb-1b93-48e5-ba64-2c9cafd34481</id>
+      <masked>false</masked>
+      <name>input2</name>
+   </variable>
+</TestCaseEntity>
