@@ -10,13 +10,13 @@
       <description></description>
       <id>3e9c1e1e-dc56-4dc2-8049-795026a87635</id>
       <masked>false</masked>
-      <name>input1</name>
+      <name>data1</name>
    </variable>
    <variable>
       <defaultValue>[]</defaultValue>
       <description></description>
       <id>58e016fb-1b93-48e5-ba64-2c9cafd34481</id>
       <masked>false</masked>
-      <name>input2</name>
+      <name>data2</name>
    </variable>
 </TestCaseEntity>

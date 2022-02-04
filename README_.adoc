@@ -30,17 +30,7 @@ They want their test to be able to
 
 This is a *Frequently Asked Question* in the Katalon forum. So, I would present a runnable sample code for it.
 
-== Solution
-
-=== Test Cases
-
-I will show a set of sample codes.
-
-Test Case `TC1` is preparatory code. `TC1` contains 2 instances of `List<List<String>` filled with literals values, same as the screenshot images above.
-
-Test Case `TC2` actually opens URL in web browser, scrapge the HTML for the table data, constructs 2 instances of `List<List<String>>` filled with data scrapage out of the web pages.
-
-Both of `TC1` and `TC2` calles a seperated Test Case `compare2datasets`. This code implements data manipulation and verifications.
+== Fixture HTML
 
 I made 2 HTML files and included in this project.
 
@@ -63,9 +53,15 @@ include::./Include/web/page2.html[]
 The Test Case `TC2` will open these 2 HTML files as `file:///` URL.
 
 
-== Description
+== Test Cases
 
-Please find and read the source code of Test Cases.
+I have made 3 Test Cases.
+
+Test Case `TC1` is preparatory code. `TC1` contains 2 instances of `List<List<String>` filled with literals values, same as the screenshot images above.
+
+Test Case `TC2` actually opens URL in web browser, scrape the HTML for the table data, constructs 2 instances of `List<List<String>>` filled with data scrape out of the web pages.
+
+Both of `TC1` and `TC2` calls a separated Test Case `compare2datasets`. This code implements data manipulation and verifications.
 
 === TC1
 
