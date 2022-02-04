@@ -1,0 +1,153 @@
+= Comparing 2 HTML <TABLE>s in Katalon Studio
+
+This is a small Katalon Studio project for demonstration purpose. You can download the zip of the project from the https://github.com/kazurayam/ks_comparing_2_HTML_tables/releases[Releases] page, unzip it, and open it with your Katalon Studio.
+
+This project is made in the hope to propose a solution to a topic in the Katalon Forum.
+
+- https://forum.katalon.com/t/comparing-two-tables/62051/5[Comparing 2 tables]
+
+This project was made and tested using Katalon Studio v8.2.5, but it should work with any KS version.
+
+== Problem to solve.
+
+Some Katalon Studio users want to compare data in 2 HTML tables found in the web page of their Application Under Test. Let me assume, I have 2 pages as follows:
+
+image::https://kazurayam.github.io/ks_comparing_2_HTML_tables/images/page1.png[page1]
+
+image::https://kazurayam.github.io/ks_comparing_2_HTML_tables/images/page2.png[page2]
+
+The 2 tables looks similar. But you should be able to find some differences in the data contained.
+
+They want to scrape data out of these 2 HTML `<TABLE>` tags, and compare them.
+
+They want their test to be able to
+
+1. sort the rows of each tables with some reasonable keys. The above tables have a key which is a concatenation of 2 columns: "CUSTOMER" + "CHANNEL". Here we assume the key values are unique in the given data sets.
+
+2. find if any row key in the page1 is missing out of the page2.
+
+3. find if any row key in the page2 is missing out of the page1.
+
+This is a *Frequently Asked Question* in the Katalon forum. So, I would present a runnable sample code for it.
+
+== Solution
+
+=== Test Cases
+
+I will show a set of sample codes.
+
+Test Case `TC1` is preparatory code. `TC1` contains 2 instances of `List<List<String>` filled with literals values, same as the screenshot images above.
+
+Test Case `TC2` actually opens URL in web browser, scrapge the HTML for the table data, constructs 2 instances of `List<List<String>>` filled with data scrapage out of the web pages.
+
+Both of `TC1` and `TC2` calles a seperated Test Case `compare2datasets`. This code implements data manipulation and verifications.
+
+I made 2 HTML files and included in this project.
+
+- link:./Include/web/page1.html[page1]
+
+[source,html]
+----
+include::./Include/web/page1.html[]
+----
+
+
+- link:./Include/web/page2.html[page2]
+
+
+[source,html]
+----
+include::./Include/web/page2.html[]
+----
+
+The Test Case `TC2` will open these 2 HTML files as `file:///` URL.
+
+
+== Description
+
+Please find and read the source code of Test Cases.
+
+=== TC1
+
+[source,groovy]
+----
+include::Scripts/TC1/Script1643979631713.groovy[]
+----
+
+=== TC2
+
+[source,groovy]
+----
+include::Scripts/TC2/Script1643980478347.groovy[]
+----
+
+
+
+=== compare2datasets
+
+[source,groovy]
+----
+include::Scripts/compare2datasets/Script1643983229793.groovy[]
+----
+
+=== Output
+
+When I execute th `TC2`, I got the following output in the console.
+
+[source]
+----
+2022-02-05 00:00:42.187 INFO  c.k.katalon.core.main.TestCaseExecutor   - CALL Test Cases/compare2datasets
+2022-02-05 00:00:42.413 INFO  c.k.katalon.core.main.TestCaseExecutor   - (Default) input1 = []
+2022-02-05 00:00:42.485 INFO  c.k.katalon.core.main.TestCaseExecutor   - (Default) input2 = []
+-------- data 1 --------
+[Customer A|Retail B|abc]
+[Customer C|Retail B|ghi]
+[Customer D|Key Account|jkl]
+[Customer E|Retail A|lmn]
+[Customer F|Key Account|opq]
+[Customer G|Key Account|rst]
+
+-------- data 2 --------
+[Customer A|Retail B|]
+[Customer B|Retail A|]
+[Customer C|Retail B|]
+[Customer D|Key Account|]
+[Customer E|Retail A|]
+[Customer G|Key Account|]
+
+"Customer F|Key Account" is contained in the data1, but is missing in the data2
+
+2022-02-05 00:00:42.964 ERROR com.kms.katalon.core.util.KeywordUtil    - ❌ data1 > data2
+
+"Customer B|Retail A" is contained in the data2, but is missing in the data1
+
+2022-02-05 00:00:42.985 ERROR com.kms.katalon.core.util.KeywordUtil    - ❌ data1 < data2
+2022-02-05 00:00:42.991 ERROR c.k.katalon.core.main.TestCaseExecutor   - ❌ Test Cases/compare2datasets FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: data1 > data2
+	at com.kms.katalon.core.util.KeywordUtil.markFailed(KeywordUtil.java:19)
+	at com.kms.katalon.core.util.KeywordUtil$markFailed.call(Unknown Source)
+	at compare2datasets.run(compare2datasets:43)
+  ...
+----
+
+== Discussion
+
+ I introduced several programming techniques.
+
+class Record to encapsulate data in a row of HTML table
+the Record has getKey() method that makes a combination of CUTOMER+CHANNEL as the key which identifies a row of HTML table uniquely.
+use java.util.TreeMap to make a set of Record objects automatically sorted by the key; the Record class implements int compareTo(Record) method.
+use java.util.Set that provides removeAll() method which performs substitute operation of mathmatical set; the Record class implements boolean equals(Object) method.
+
+Do you think this is unnecessarily complicated? I don’t think so. This sample code is an absolute minimum to solve the problem that was asked to solve. The problem is a difficult one, it deserves this complexity.
+
+However, I think that it is not a good idea to perform such full stack programming in an automated UI tests. I think such full stack programming should be carried out in the unit-tests for the web server app possibly using SQL; or the unit-tests for the JavaScript upon JSON data in the single page web app. I think automated UI test for HTML should NOT be responsible for this layer of problems. 
+
+== Conclusion
+
+You should not try to write "compare 2 tables" in Katalon Studio. Too much complexed UI automation code will not be well maintained long. Sooner or later (in a few months) it will break when the HTML design changed. Then you will remove the broken UI test out of the Test Suite. Your efforts will be in vain.
+
+
+@author kazurayam
+@date 4 Feb, 2022
