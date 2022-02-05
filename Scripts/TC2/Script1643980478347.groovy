@@ -37,7 +37,6 @@ List<List<String>> getDataFromPage(URL url, String tableId) {
 	WebUI.navigateToUrl(url.toString())
 	WebDriver driver = DriverFactory.getWebDriver();
 	WebElement table = driver.findElement(By.xpath("//table[@id='${tableId}']"))
-	return scrapeDataOutOfTable(table)
 	if (table != null) {
 		data.addAll(scrapeDataOutOfTable(table))
 	} else {
