@@ -1,0 +1,10 @@
+{
+  "keywordFileContentHash": "7CB7F1DE08588AC4C6CDF0BFD031B411",
+  "keywordClasses": [
+    {
+      "name": "com.kazurayam.ks.keyword.DiffUtilTest",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": true
+}

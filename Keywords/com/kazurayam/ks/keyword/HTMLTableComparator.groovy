@@ -1,22 +1,52 @@
 package com.kazurayam.ks.keyword
 
+import com.google.gson.Gson
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.testobject.TestObject
 
 import oracle.jdbc.replay.driver.TxnReplayableOthers
 
+
+/**
+ * in for a penny, in for a pound
+ * 
+ * @author kazuarayam
+ */
 class HTMLTableComparator {
 
-	@Keyword
-	List<Record> sortTableBody(TestObject table, Range<Integer> keyRange) {
-	}
 
-	@Keyword
-	Set<RowKey> rowKeys(TestObject table, Range<Integer> keyRange) {
-	}
 
-	@Keyword
-	Boolean tablesHaveSameKeys(TestObject table1, TestObject table2, Range<Integer> keyRange) {
+	//-----------------------------------------------------------------
+
+	static class Records {
+		private final List<Record> records
+		Records() {
+			this.records = new ArrayList<>()
+		}
+		void add(Record record) {
+			this.records.add(record)
+		}
+		void addAll(List<Record> list) {
+			this.records.addAll(list)
+		}
+		@Override
+		String toString() {
+			return toJson()
+		}
+		String toJson() {
+			StringBuilder sb = new StringBuilder()
+			sb.append("[\n")
+			int count = 0
+			for (Record r in records) {
+				if (count > 0) {
+					sb.append(",\n")
+				}
+				sb.append(r.toJson())
+				count += 1
+			}
+			sb.append("]\n")
+			return sb.toString()
+		}
 	}
 
 	/**
@@ -34,6 +64,10 @@ class HTMLTableComparator {
 			this.rowValues = new RowValues(row)
 			this.keyRange = keyRange
 			this.rowKey = new RowKey(row, keyRange)
+		}
+
+		Record(Record source) {
+			this(source.rowValues().values(), source.keyRange())
 		}
 
 		private void validateRange(List<String> row, Range<Integer> keyRange) {
@@ -79,13 +113,18 @@ class HTMLTableComparator {
 
 		@Override
 		String toString() {
+			return toJson()
+		}
+
+		String toJson() {
+			Gson gson = new Gson()
 			StringBuilder sb = new StringBuilder()
 			sb.append("{")
-			sb.append("\"rowKey\":\"" + this.rowKey().toString() + "\"")
+			sb.append(gson.toJson("rowKey") + ":" + gson.toJson(this.rowKey().toString()))
 			sb.append(",")
-			sb.append("\"rowValues\":\"" + this.rowValues().toString() + "\"")
+			sb.append(gson.toJson("rowValues") + ":" + gson.toJson(this.rowValues().toString()))
 			sb.append(",")
-			sb.append("\"keyRange\":\"" + this.keyRange().toString() + "\"")
+			sb.append(gson.toJson("keyRange") + ":" + gson.toJson(this.keyRange().toString()))
 			sb.append("}")
 			return sb.toString()
 		}
@@ -94,7 +133,8 @@ class HTMLTableComparator {
 		int compareTo(Record other) {
 			int keyComparison = this.rowKey() <=> other.rowKey()
 			if (keyComparison == 0) {
-				return this.rowValues() <=> other.rowValues()
+				int valuesComparison = this.rowValues() <=> other.rowValues()
+				return valuesComparison
 			} else {
 				return keyComparison
 			}
@@ -114,6 +154,10 @@ class HTMLTableComparator {
 			validateParams(row, keyRange)
 			this.keyElements.addAll(getKeyElements(row, keyRange))
 			this.keyRange = keyRange
+		}
+
+		RowKey(RowKey source) {
+			this(source.keyElements(), source.keyRange())
 		}
 
 		private void validateParams(List<String> row, Range<Integer> keyRange) {
@@ -169,6 +213,11 @@ class HTMLTableComparator {
 
 		@Override
 		String toString() {
+			return toJson()
+		}
+
+		String toJson() {
+			Gson gson = new Gson()
 			StringBuilder sb = new StringBuilder()
 			sb.append("[");
 			int count = 0;
@@ -176,7 +225,7 @@ class HTMLTableComparator {
 				if (count > 0) {
 					sb.append(",")
 				}
-				sb.append(s)
+				sb.append(gson.toJson(s))
 				count += 1
 			}
 			sb.append("]")
@@ -215,6 +264,18 @@ class HTMLTableComparator {
 			this.values = values;
 		}
 
+		RowValues(RowValues source) {
+			this(copyStringList(source.values()))
+		}
+
+		private static List<String> copyStringList(List<String> source) {
+			List<String> target = new ArrayList<>()
+			for (String s in source) {
+				target.add(s)
+			}
+			return target
+		}
+
 		List<String> values() {
 			return this.values
 		}
@@ -249,6 +310,11 @@ class HTMLTableComparator {
 
 		@Override
 		String toString() {
+			return toJson()
+		}
+
+		String toJson() {
+			Gson gson = new Gson()
 			StringBuilder sb = new StringBuilder()
 			sb.append("[")
 			int count = 0;
@@ -256,13 +322,13 @@ class HTMLTableComparator {
 				if (count > 0) {
 					sb.append(",")
 				}
-				sb.append(s)
+				sb.append(gson.toJson(s))
 				count += 1
 			}
 			sb.append("]")
 			return sb.toString()
 		}
-		
+
 		@Override
 		int compareTo(RowValues other) {
 			if (this.values().size() < other.values().size()) {

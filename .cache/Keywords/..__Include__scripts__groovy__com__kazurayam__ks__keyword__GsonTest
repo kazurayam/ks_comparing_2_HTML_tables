@@ -1,0 +1,10 @@
+{
+  "keywordFileContentHash": "1547EBBC01C81ACDAA5A5442D951F90A",
+  "keywordClasses": [
+    {
+      "name": "com.kazurayam.ks.keyword.GsonTest",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": true
+}

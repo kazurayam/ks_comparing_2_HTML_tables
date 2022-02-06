@@ -1,20 +1,48 @@
 plugins {
   id 'java'
-  id "com.katalon.gradle-plugin" version "0.0.7"
+}
+
+version = '0.2.0-SNAPSHOT'
+
+ext {
+    AUTO_IMPORTED_JAR_PREFIX = 'AUTOIMPORTED_'
 }
 
 repositories {
   mavenCentral()
 }
 
+configurations {
+    myconf
+}
+
 dependencies {
-  // sample dependencies
-  // rest-assured
-  // compile 'io.rest-assured:rest-assured:3.2.0'
-  // JsonPath
-  // compile 'io.rest-assured:json-path:3.2.0'
-  // XmlPath
-  // compile 'io.rest-assured:json-path:3.2.0'
-  // JSON Schema Validation
-  // compile 'io.rest-assured:json-schema-validator:3.2.0'
+  
+  // https://mvnrepository.com/artifact/io.github.java-diff-utils/java-diff-utils
+  myconf group: 'io.github.java-diff-utils', name: 'java-diff-utils', version: '4.11'
+  
+  // https://mvnrepository.com/artifact/com.kazurayam/junit4ks
+  myconf group: 'com.kazurayam', name: 'junit4ks', version: '1.6.1' 
+}
+
+task drivers {
+    doFirst {
+        delete fileTree("Drivers") {
+            include("**/" + AUTO_IMPORTED_JAR_PREFIX + "*")
+        }
+    }
+    doLast {
+        copy { copySpec ->
+            copySpec
+                .from(project.getConfigurations().getByName("myconf"))
+                .into("Drivers")
+                .include(
+                    "**/junit4ks*.jar",
+                    "**/java-diff-utils*.jar",
+                    )
+                .rename({ s ->
+                    AUTO_IMPORTED_JAR_PREFIX + s
+                    })
+        }
+    }
 }

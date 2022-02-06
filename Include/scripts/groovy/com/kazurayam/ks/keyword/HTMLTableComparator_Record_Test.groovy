@@ -29,7 +29,7 @@ public class HTMLTableComparator_Record_Test {
 		Record rec = new Record(row, keyRange)
 		assertEquals(new RowValues(["a", "b", "c"]), rec.rowValues())
 	}
-	
+
 	@Test
 	public void test_rowKey() {
 		List<String> row = ["a", "b", "c"]
@@ -37,7 +37,7 @@ public class HTMLTableComparator_Record_Test {
 		Record rec = new Record(row, keyRange)
 		assertEquals(new RowKey(["a", "b", "c"], 0..1), rec.rowKey())
 	}
-	
+
 
 	@Test
 	public void test_keyRange() {
@@ -46,7 +46,7 @@ public class HTMLTableComparator_Record_Test {
 		Record rec = new Record(row, keyRange)
 		assertEquals(0..1, rec.keyRange())
 	}
-	
+
 
 	@Test
 	public void test_rowKeyEquals() {
@@ -56,7 +56,7 @@ public class HTMLTableComparator_Record_Test {
 		Record r2 = new Record(row2, 0..1)
 		assertTrue(r1.rowKeyEquals(r2))
 	}
-	
+
 	@Test
 	public void test_equals_true() {
 		List<String> row1 = ["a", "b", "c"]
@@ -66,7 +66,7 @@ public class HTMLTableComparator_Record_Test {
 		assertEquals(r1, r2)
 	}
 
-	
+
 	@Test
 	public void test_equals_false_by_value() {
 		List<String> row1 = ["a", "b", "c"]
@@ -74,7 +74,6 @@ public class HTMLTableComparator_Record_Test {
 		Record r1 = new Record(row1, 0..1)
 		Record r2 = new Record(row2, 0..1)
 		assertNotEquals(r1, r2)
-	
 	}
 
 	@Test
@@ -93,7 +92,7 @@ public class HTMLTableComparator_Record_Test {
 		assertTrue(r1.hashCode() > 0)
 	}
 
-	
+
 	@Test
 	public void test_toString() {
 		List<String> row1 = ["a", "b", "c"]
@@ -113,40 +112,37 @@ public class HTMLTableComparator_Record_Test {
 	}
 
 	/*
-	@Test
-	public void test_compareTo_minus() {
-		List<String> row1 = ["a", "b", "c"]
-		List<String> row2 = ["b", "c", "d"]
-		RowKey rk1 = new RowKey(row1, 0..1)
-		RowKey rk2 = new RowKey(row2, 0..1)
-		assertEquals(-1, rk1.compareTo(rk2))
-	}
-
-	@Test
-	public void test_compareTo_plus() {
-		List<String> row1 = ["b", "c", "d"]
-		List<String> row2 = ["a", "b", "c"]
-		RowKey rk1 = new RowKey(row1, 0..1)
-		RowKey rk2 = new RowKey(row2, 0..1)
-		assertEquals(1, rk1.compareTo(rk2))
-	}
-
-	@Test
-	public void test_compareTo_shorter() {
-		List<String> row1 = ["a", "b", "c"]
-		List<String> row2 = ["a", "b", "c"]
-		RowKey rk1 = new RowKey(row1, 0..0)
-		RowKey rk2 = new RowKey(row2, 0..1)
-		assertEquals(-1, rk1.compareTo(rk2))
-	}
-
-	@Test
-	public void test_compareTo_longer() {
-		List<String> row1 = ["a", "b", "c"]
-		List<String> row2 = ["a", "b", "c"]
-		RowKey rk1 = new RowKey(row1, 0..1)
-		RowKey rk2 = new RowKey(row2, 0..0)
-		assertEquals(1, rk1.compareTo(rk2))
-	}
-	*/
+	 @Test
+	 public void test_compareTo_minus() {
+	 List<String> row1 = ["a", "b", "c"]
+	 List<String> row2 = ["b", "c", "d"]
+	 RowKey rk1 = new RowKey(row1, 0..1)
+	 RowKey rk2 = new RowKey(row2, 0..1)
+	 assertEquals(-1, rk1.compareTo(rk2))
+	 }
+	 @Test
+	 public void test_compareTo_plus() {
+	 List<String> row1 = ["b", "c", "d"]
+	 List<String> row2 = ["a", "b", "c"]
+	 RowKey rk1 = new RowKey(row1, 0..1)
+	 RowKey rk2 = new RowKey(row2, 0..1)
+	 assertEquals(1, rk1.compareTo(rk2))
+	 }
+	 @Test
+	 public void test_compareTo_shorter() {
+	 List<String> row1 = ["a", "b", "c"]
+	 List<String> row2 = ["a", "b", "c"]
+	 RowKey rk1 = new RowKey(row1, 0..0)
+	 RowKey rk2 = new RowKey(row2, 0..1)
+	 assertEquals(-1, rk1.compareTo(rk2))
+	 }
+	 @Test
+	 public void test_compareTo_longer() {
+	 List<String> row1 = ["a", "b", "c"]
+	 List<String> row2 = ["a", "b", "c"]
+	 RowKey rk1 = new RowKey(row1, 0..1)
+	 RowKey rk2 = new RowKey(row2, 0..0)
+	 assertEquals(1, rk1.compareTo(rk2))
+	 }
+	 */
 }
