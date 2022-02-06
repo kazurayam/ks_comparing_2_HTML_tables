@@ -1,5 +1,5 @@
 {
-  "keywordFileContentHash": "02EF2A4CC0486F2704BD829E09777D94",
+  "keywordFileContentHash": "4213CFA526A52A60D4B356F636084293",
   "keywordClasses": [
     {
       "name": "com.kazurayam.ks.keyword.HTMLTableComparator",
@@ -43,7 +43,8 @@
                 "errorOnParsing": false
               }
             }
-          ]
+          ],
+          "javadoc": ""
         },
         {
           "name": "rowKeys",
@@ -84,7 +85,8 @@
                 "errorOnParsing": false
               }
             }
-          ]
+          ],
+          "javadoc": ""
         },
         {
           "name": "tablesHaveSameKeys",
@@ -138,7 +140,8 @@
                 "errorOnParsing": false
               }
             }
-          ]
+          ],
+          "javadoc": ""
         }
       ]
     },
@@ -155,5 +158,5 @@
       "keywordMethods": []
     }
   ],
-  "javadocParsed": false
+  "javadocParsed": true
 }

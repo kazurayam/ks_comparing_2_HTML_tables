@@ -6,7 +6,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-import com.kazurayam.ks.HTMLTableComparator.RowValues
+import com.kazurayam.ks.keyword.HTMLTableComparator.RowValues
 
 @RunWith(JUnit4.class)
 
@@ -20,7 +20,7 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertTrue(rv1.equals(rv2))
 	}
-	
+
 	@Test
 	public void test_equals_false_by_size() {
 		List<String> l1 = ["a"];
@@ -29,7 +29,7 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertFalse(rv1.equals(rv2))
 	}
-	
+
 	@Test
 	public void test_equals_false_by_value() {
 		List<String> l1 = ["a"];
@@ -38,14 +38,14 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertFalse(rv1.equals(rv2))
 	}
-	
+
 	@Test
 	public void test_hashCode() {
 		List<String> l1 = ["a"]
 		RowValues rv1 = new RowValues(l1)
 		assertTrue(rv1.hashCode() > 0)
 	}
-	
+
 	@Test
 	public void test_toString() {
 		List<String> l1 = ["a"]

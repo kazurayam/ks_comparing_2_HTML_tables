@@ -73,7 +73,7 @@ class HTMLTableComparator {
 	/**
 	 * 
 	 */
-	public static class RowKey {
+	public static class RowKey implements Comparable<RowKey> {
 		private final List<String> keyElements = new ArrayList<>()
 		private final Range<Integer> keyRange;
 
@@ -150,6 +150,25 @@ class HTMLTableComparator {
 			}
 			sb.append("]")
 			return sb.toString()
+		}
+
+		@Override
+		int compareTo(RowKey other) {
+			List<String> tke = this.keyElements()
+			List<String> oke = other.keyElements()
+			if (tke.size() < oke.size()) {
+				return -1
+			} else if (tke.size() == oke.size()) {
+				for (int i = 0; i < tke.size(); i++) {
+					int comparison = tke.get(i).compareTo(oke.get(i))
+					if (comparison != 0) {
+						return comparison
+					}
+				}
+				return 0
+			} else {
+				return +1
+			}
 		}
 	}
 
