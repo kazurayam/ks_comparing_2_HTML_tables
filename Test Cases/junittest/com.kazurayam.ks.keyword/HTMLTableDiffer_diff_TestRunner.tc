@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>HTMLTableComparator_RowValues_TestRunner</name>
+   <name>HTMLTableDiffer_diff_TestRunner</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>b1a51b5d-8655-409e-b6f7-4f7c8d9454cd</testCaseGuid>
+   <testCaseGuid>1f850d09-76d2-44dc-8b4b-5b27ae5ddd39</testCaseGuid>
 </TestCaseEntity>

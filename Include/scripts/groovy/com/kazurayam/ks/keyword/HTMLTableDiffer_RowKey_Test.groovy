@@ -6,11 +6,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-import com.kazurayam.ks.keyword.HTMLTableComparator.RowKey
+import com.kazurayam.ks.keyword.HTMLTableDiffer.RowKey
 
 @RunWith(JUnit4.class)
 
-public class HTMLTableComparator_RowKey_Test {
+public class HTMLTableDiffer_RowKey_Test {
 
 	@Test
 	public void test_constructor() {
@@ -68,7 +68,7 @@ public class HTMLTableComparator_RowKey_Test {
 	public void test_toString() {
 		List<String> row1 = ["a", "b", "c"]
 		RowKey rk1 = new RowKey(row1, 0..1)
-		assertEquals("[a,b]", rk1.toString())
+		assertEquals("[\"a\",\"b\"]", rk1.toString())
 	}
 
 	@Test
@@ -115,5 +115,4 @@ public class HTMLTableComparator_RowKey_Test {
 		RowKey rk2 = new RowKey(row2, 0..0)
 		assertEquals(1, rk1.compareTo(rk2))
 	}
-	
 }

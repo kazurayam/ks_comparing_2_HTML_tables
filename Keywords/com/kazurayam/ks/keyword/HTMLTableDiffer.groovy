@@ -5,49 +5,70 @@ import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.testobject.TestObject
 
 import oracle.jdbc.replay.driver.TxnReplayableOthers
+import java.util.stream.Collectors
 
+import com.github.difflib.DiffUtils
+import com.github.difflib.UnifiedDiffUtils
+import com.github.difflib.patch.Patch
+import com.github.difflib.text.DiffRow
+import com.github.difflib.text.DiffRowGenerator
 
 /**
  * in for a penny, in for a pound
  * 
  * @author kazuarayam
  */
-class HTMLTableComparator {
+class HTMLTableDiffer {
 
+	HTMLTableDiffer() {}
 
+	boolean diff(List<List<String>> data1, List<List<String>> data2, File output) {
+		Objects.requireNonNull(data1)
+		Objects.requireNonNull(data2)
+		Objects.requireNonNull(output)
+		ensureParentDirs(output)
+		List<String> lines1 =
+				data1.stream()
+				.map({ List<String> row -> new Record(row, 0..0) })
+				.map({ Record rec -> rec.toJson() })
+				.collect(Collectors.toList())
+		List<String> lines2 =
+				data2.stream()
+				.map({ List<String> row -> new Record(row, 0..0) })
+				.map({ Record rec -> rec.toJson() })
+				.collect(Collectors.toList())
 
-	//-----------------------------------------------------------------
+		// generating diff info
+		Patch<String> diff = DiffUtils.diff(lines1, lines2)
 
-	static class Records {
-		private final List<Record> records
-		Records() {
-			this.records = new ArrayList<>()
-		}
-		void add(Record record) {
-			this.records.add(record)
-		}
-		void addAll(List<Record> list) {
-			this.records.addAll(list)
-		}
-		@Override
-		String toString() {
-			return toJson()
-		}
-		String toJson() {
-			StringBuilder sb = new StringBuilder()
-			sb.append("[\n")
-			int count = 0
-			for (Record r in records) {
-				if (count > 0) {
-					sb.append(",\n")
-				}
-				sb.append(r.toJson())
-				count += 1
-			}
-			sb.append("]\n")
-			return sb.toString()
+		// generating unified diff format
+		List<String> unifiedDiff =
+				UnifiedDiffUtils.generateUnifiedDiff("left", "right", lines1, diff, 3)
+		write(unifiedDiff, output)
+
+		return unifiedDiff.size() > 0
+	}
+
+	private void ensureParentDirs(File f) {
+		File parent = f.getParentFile()
+		if (!parent.exists()) {
+			boolean b = parent.mkdirs()
 		}
 	}
+
+	private void write(List<String> lines, File file) {
+		PrintWriter pw = new PrintWriter(
+				new BufferedWriter(
+				new OutputStreamWriter(
+				new FileOutputStream(file),"UTF-8")))
+		for (String line in lines) {
+			pw.println(line)
+		}
+		pw.flush()
+		pw.close()
+	}
+
+	//-----------------------------------------------------------------
 
 	/**
 	 * 
@@ -74,7 +95,7 @@ class HTMLTableComparator {
 			assert keyRange.getFrom() <= keyRange.getTo()
 			assert 0 <= keyRange.getFrom()
 			assert keyRange.getFrom() < row.size()
-			assert 0 < keyRange.getTo()
+			assert 0 <= keyRange.getTo()
 			assert keyRange.getTo() < row.size()
 		}
 
@@ -120,11 +141,11 @@ class HTMLTableComparator {
 			Gson gson = new Gson()
 			StringBuilder sb = new StringBuilder()
 			sb.append("{")
-			sb.append(gson.toJson("rowKey") + ":" + gson.toJson(this.rowKey().toString()))
+			sb.append(gson.toJson("rowKey") + ":" + this.rowKey().toJson())
 			sb.append(",")
-			sb.append(gson.toJson("rowValues") + ":" + gson.toJson(this.rowValues().toString()))
+			sb.append(gson.toJson("rowValues") + ":" + this.rowValues().toJson())
 			sb.append(",")
-			sb.append(gson.toJson("keyRange") + ":" + gson.toJson(this.keyRange().toString()))
+			sb.append(gson.toJson("keyRange") + ":" + gson.toJson(this.keyRange()))
 			sb.append("}")
 			return sb.toString()
 		}

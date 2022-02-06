@@ -6,13 +6,13 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-import com.kazurayam.ks.keyword.HTMLTableComparator.Record
-import com.kazurayam.ks.keyword.HTMLTableComparator.RowKey
-import com.kazurayam.ks.keyword.HTMLTableComparator.RowValues
+import com.kazurayam.ks.keyword.HTMLTableDiffer.Record
+import com.kazurayam.ks.keyword.HTMLTableDiffer.RowKey
+import com.kazurayam.ks.keyword.HTMLTableDiffer.RowValues
 
 @RunWith(JUnit4.class)
 
-public class HTMLTableComparator_Record_Test {
+public class HTMLTableDiffer_Record_Test {
 
 	@Test
 	public void test_constructor() {
@@ -98,7 +98,7 @@ public class HTMLTableComparator_Record_Test {
 		List<String> row1 = ["a", "b", "c"]
 		Record r1 = new Record(row1, 0..1)
 		println r1.toString()
-		assertEquals('''{"rowKey":"[a,b]","rowValues":"[a,b,c]","keyRange":"0..1"}''', r1.toString())
+		assertEquals('''{"rowKey":["a","b"],"rowValues":["a","b","c"],"keyRange":[0,1]}''', r1.toString())
 	}
 
 

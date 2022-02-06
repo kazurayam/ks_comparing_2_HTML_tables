@@ -16,18 +16,18 @@ public class DiffUtilTest {
 	void test_unified_diff() {
 		List<String> text1=Arrays.asList("this is a test","a test");
 		List<String> text2=Arrays.asList("this is a testfile","a test");
-		
+
 		//generating diff information.
 		Patch<String> diff = DiffUtils.diff(text1, text2);
-		
+
 		//generating unified diff format
 		List<String> unifiedDiff = UnifiedDiffUtils.generateUnifiedDiff("original-file.txt", "new-file.txt", text1, diff, 0);
-		
+
 		for (String line in unifiedDiff) {
 			println line
 		}
 	}
-	
+
 	@Test
 	void test_DiffRowGenerator() {
 		Function strikethrough = { any -> "~" }

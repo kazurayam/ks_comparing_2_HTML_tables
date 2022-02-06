@@ -1,0 +1,26 @@
+{
+  "keywordFileContentHash": "82A5478489B88BFA3359F10E240C3744",
+  "keywordClasses": [
+    {
+      "name": "com.kazurayam.ks.keyword.HTMLTableDiffer",
+      "keywordMethods": []
+    },
+    {
+      "name": "com.kazurayam.ks.keyword.HTMLTableDiffer$Records",
+      "keywordMethods": []
+    },
+    {
+      "name": "com.kazurayam.ks.keyword.HTMLTableDiffer$Record",
+      "keywordMethods": []
+    },
+    {
+      "name": "com.kazurayam.ks.keyword.HTMLTableDiffer$RowKey",
+      "keywordMethods": []
+    },
+    {
+      "name": "com.kazurayam.ks.keyword.HTMLTableDiffer$RowValues",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": false
+}

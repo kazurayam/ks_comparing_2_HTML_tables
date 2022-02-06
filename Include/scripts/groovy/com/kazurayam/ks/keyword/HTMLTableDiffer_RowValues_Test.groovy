@@ -6,11 +6,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-import com.kazurayam.ks.keyword.HTMLTableComparator.RowValues
+import com.kazurayam.ks.keyword.HTMLTableDiffer.RowValues
 
 @RunWith(JUnit4.class)
 
-public class HTMLTableComparator_RowValues_Test {
+public class HTMLTableDiffer_RowValues_Test {
 
 	@Test
 	public void test_equals_true() {
@@ -50,9 +50,9 @@ public class HTMLTableComparator_RowValues_Test {
 	public void test_toString() {
 		List<String> l1 = ["a"]
 		RowValues rv1 = new RowValues(l1)
-		assertEquals("[a]", rv1.toString())
+		assertEquals("[\"a\"]", rv1.toString())
 	}
-	
+
 	@Test
 	public void test_compareTo_0() {
 		List<String> l1 = ["a"];
@@ -61,7 +61,7 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertEquals(0, rv1.compareTo(rv2))
 	}
-	
+
 	@Test
 	public void test_compareTo_minus_by_value() {
 		List<String> l1 = ["a"];
@@ -70,7 +70,7 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertEquals(-1, rv1.compareTo(rv2))
 	}
-	
+
 	@Test
 	public void test_compareTo_plus_by_value() {
 		List<String> l1 = ["b"];
@@ -79,7 +79,7 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertEquals(1, rv1.compareTo(rv2))
 	}
-	
+
 	@Test
 	public void test_compareTo_minus_by_size() {
 		List<String> l1 = ["a"];
@@ -88,7 +88,7 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertEquals(-1, rv1.compareTo(rv2))
 	}
-	
+
 	@Test
 	public void test_compareTo_plus_by_size() {
 		List<String> l1 = ["a", "b"];
@@ -97,5 +97,4 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv2 = new RowValues(l2)
 		assertEquals(1, rv1.compareTo(rv2))
 	}
-	
 }

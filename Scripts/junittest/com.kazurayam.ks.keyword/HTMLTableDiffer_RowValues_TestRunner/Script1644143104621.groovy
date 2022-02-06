@@ -1,0 +1,5 @@
+import static com.kazurayam.junit4ks.JUnitCustomKeywords.runWithJUnitRunner
+
+import com.kazurayam.ks.keyword.HTMLTableDiffer_RowValues_Test
+
+runWithJUnitRunner(HTMLTableDiffer_RowValues_Test.class)
