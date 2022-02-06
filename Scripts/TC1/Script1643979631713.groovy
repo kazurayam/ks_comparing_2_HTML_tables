@@ -17,13 +17,14 @@ List<List<String>> input1 = [
 ];
 
 List<List<String>> input2 = [
+		[ "Customer A", "Retail B" ],
 		[ "Customer D", "Key Account" ],
 		[ "Customer B", "Retail A" ],
 		[ "Customer C", "Retail B" ],
-		[ "Customer A", "Retail B" ],
-		[ "Customer G", "Key Account" ],
 		[ "Customer E", "Retail A" ],
 		// [ "Customer F", "Key Account" ],
+		[ "Customer G", "Key Account" ]
+		
 ];
 
 WebUI.callTestCase(findTestCase("compare2datasets"), ["data1": input1, "data2": input2])

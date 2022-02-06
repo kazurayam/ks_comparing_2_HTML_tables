@@ -83,7 +83,7 @@ public class HTMLTableDiffer_diff_Test {
 		boolean different = differ.diff(input1, input2, output)
 		assertTrue(different)
 	}
-	
+
 	@Test
 	void test_diffKeyws() {
 		File output = classOutputDir.resolve("test_diffKeys.txt").toFile()

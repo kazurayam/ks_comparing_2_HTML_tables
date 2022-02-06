@@ -1,0 +1,6 @@
+66ff3068d57c18c34dd8b80c4d6e7a73655bef6b	html	{"category":"diff", "left":"59ace549aad07a80f2d634eb9c08bf2fab33feab", "ratio":"0.00%", "right":"59ace549aad07a80f2d634eb9c08bf2fab33feab"}
+9e9f976eed10c8b1d8f60e83c26bcf37ba55459b	html	{"category":"diff", "left":"59ace549aad07a80f2d634eb9c08bf2fab33feab", "ratio":"50.00%", "right":"e82f4b76123a85f374f3b0aa756225361df29428"}
+1ad826e847fc94b77ab099abf3468e52754e93ff	html	{"category":"diff", "left":"e82f4b76123a85f374f3b0aa756225361df29428", "ratio":"0.00%", "right":"e82f4b76123a85f374f3b0aa756225361df29428"}
+5f017d6ea3742744d7d67d42e3acfef6df055281	html	{"category":"diff", "left":"e82f4b76123a85f374f3b0aa756225361df29428", "ratio":"50.00%", "right":"59ace549aad07a80f2d634eb9c08bf2fab33feab"}
+59ace549aad07a80f2d634eb9c08bf2fab33feab	txt	{"input":"input1", "target":"whole_rows"}
+e82f4b76123a85f374f3b0aa756225361df29428	txt	{"input":"input2", "target":"whole_rows"}

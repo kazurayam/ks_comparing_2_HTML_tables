@@ -4,6 +4,8 @@ import com.google.gson.Gson
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.testobject.TestObject
 
+import com.kazurayam.ks.keyword.HTMLTableDiffer.Record
+
 import oracle.jdbc.replay.driver.TxnReplayableOthers
 import java.util.stream.Collectors
 
@@ -183,7 +185,7 @@ class HTMLTableDiffer {
 			sb.append(",")
 			sb.append(gson.toJson("rowValues") + ":" + this.rowValues().toJson())
 			sb.append(",")
-			sb.append(gson.toJson("keyRange") + ":" + gson.toJson(this.keyRange()))
+			sb.append(gson.toJson("keyRange") + ":\"" + this.keyRange() + "\"")
 			sb.append("}")
 			return sb.toString()
 		}

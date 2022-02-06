@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' /><!-- Bootstrap -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We' crossorigin='anonymous' />
+    <style>.container {
+  font-family: ui-monospace, SFMono-Regular, SZ Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-size: 12px;
+  line-height: 20px;
+}
+.container dl dd {
+  margin-left: 40px;
+}
+.container .title button {
+  float: right;
+  margin-top: 6px;
+}
+.container .header {
+  padding: 16px 20px;
+}
+.container .ignoring-key {
+  background-color: #CCC;
+}
+.container .matched-value {
+  background-color: #98FB98;
+}
+.container .accordion .accordion-header button .ratio {
+  padding: 4px 20px 4px 4px;
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  flex-basis: 10%;
+}
+.container .accordion .accordion-header button .fileType {
+  padding: 4px 20px 4px 4px;
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  flex-basis: 10%;
+}
+.container .accordion .accordion-header button .metadata {
+  padding: 4px 20px 4px 4px;
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  flex-basis: 90%;
+}
+.container .accordion .accordion-header button .description {
+  padding: 4px 20px 4px 4px;
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  flex-basis: 80%;
+}
+.container .accordion .accordion-header button .warning {
+  background-color: #e0ae00;
+}
+.container .accordion .accordion-body .show-diff .modal .modal-body iframe {
+  position: absolute;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+.container .accordion .accordion-body .show-diff .modal .modal-body .carousel .carousel-inner {
+  background-color: #efefef;
+}
+.container .accordion .accordion-body .show-diff .modal .modal-body .carousel .carousel-inner .centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.container .accordion .accordion-body .show-diff .modal .modal-body .carousel .carousel-control-prev, .container .accordion .accordion-body .show-diff .modal .modal-body .carousel .carousel-control-next {
+  width: 12.5%;
+}
+.container .accordion .accordion-body .show-detail {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+/*# sourceMappingURL=style.css.map */
+</style>
+    <title>TC11</title>
+  </head>
+  <body>
+    <div class='container'>
+      <h1 class='title'>TC11
+        <button class='btn btn-secondary' type='button' data-bs-toggle='collapse' data-bs-target='#collapsingHeader' aria-expanded='false' aria-controls='collapsingHeader'>About</button>
+      </h1>
+      <div id='collapsingHeader' class='collapse header'>
+        <dl>
+          <dt>Root path :</dt>
+          <dd>/Users/kazuakiurayama/katalon-workspace/ks_comparing_2_HTML_tables/store</dd>
+          <dt>JobName :</dt>
+          <dd>TC11</dd>
+          <dt>Left MaterialList specification</dt>
+          <dd>
+            <dl>
+              <dt>JobTimestamp :</dt>
+              <dd>20220206_214943</dd>
+              <dt>MetadataPattern :</dt>
+              <dd>
+                <span>{</span>
+                <span>}</span>
+              </dd>
+              <dt>FileType :</dt>
+              <dd>not specified</dd>
+            </dl>
+          </dd>
+          <dt>Right MaterialList specification</dt>
+          <dd>
+            <dl>
+              <dt>JobTimestamp :</dt>
+              <dd>20220206_214943</dd>
+              <dt>MetadataPattern :</dt>
+              <dd>
+                <span>{</span>
+                <span>}</span>
+              </dd>
+              <dt>FileType :</dt>
+              <dd>not specified</dd>
+            </dl>
+          </dd>
+          <dt>IgnoringMetadataKeys</dt>
+          <dd>
+            <span>{</span>
+            <span class='ignoring-key'>"input"</span>
+            <span>}</span>
+          </dd>
+        </dl>
+      </div>
+      <div class='accordion' id='diff-contents'>
+        <div id='accordion1' class='accordion-item'>
+          <h2 id='heading1' class='accordion-header'>
+            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse1' area-expanded='false' aria-controls='collapse1'>
+              <span class='ratio '>0.00%</span>
+              <span class='fileType'>txt</span>
+              <span class='description'>{"target":"whole_rows"}</span>
+            </button>
+          </h2>
+          <div id='collapse1' class='according-collapse collapse' aria-labelledby='heading1' data-bs-parent='#diff-contents'>
+            <div class='accordion-body'>
+              <div class='show-diff'><!-- Button trigger modal -->
+                <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#textModal1'>Show diff in Modal</button><!-- Modal to show texts diff -->
+                <div class='modal fade' id='textModal1' tabindex='-1' aria-labelledby='textModalLabel' aria-hidden='true'>
+                  <div class='modal-dialog modal-fullscreen'>
+                    <div class='modal-content'>
+                      <div class='modal-header'>
+                        <h5 class='modal-title' id='textModalLabel1'>
+                          <span>{"target":"whole_rows"} txt 0.00%%</span>
+                          <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </h5>
+                      </div>
+                      <div class='modal-body'><!-- body -->
+                        <iframe src='TC11/20220206_214943/objects/66ff3068d57c18c34dd8b80c4d6e7a73655bef6b.html' title='TextDiff'></iframe>
+                      </div>
+                      <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='show-detail'>
+                <h2>left</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt' target='left'>TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input1"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>right</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt' target='right'>TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input1"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>diff</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/66ff3068d57c18c34dd8b80c4d6e7a73655bef6b.html' target='diff'>TC11/20220206_214943/objects/66ff3068d57c18c34dd8b80c4d6e7a73655bef6b.html</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>html</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span>"category":</span>
+                    <span>"diff"</span>
+                    <span>, </span>
+                    <span>"left":</span>
+                    <span>"59ace549aad07a80f2d634eb9c08bf2fab33feab"</span>
+                    <span>, </span>
+                    <span>"ratio":</span>
+                    <span>"0.00%"</span>
+                    <span>, </span>
+                    <span>"right":</span>
+                    <span>"59ace549aad07a80f2d634eb9c08bf2fab33feab"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='accordion2' class='accordion-item'>
+          <h2 id='heading2' class='accordion-header'>
+            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse2' area-expanded='false' aria-controls='collapse2'>
+              <span class='ratio warning'>50.00%</span>
+              <span class='fileType'>txt</span>
+              <span class='description'>{"target":"whole_rows"}</span>
+            </button>
+          </h2>
+          <div id='collapse2' class='according-collapse collapse' aria-labelledby='heading2' data-bs-parent='#diff-contents'>
+            <div class='accordion-body'>
+              <div class='show-diff'><!-- Button trigger modal -->
+                <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#textModal2'>Show diff in Modal</button><!-- Modal to show texts diff -->
+                <div class='modal fade' id='textModal2' tabindex='-1' aria-labelledby='textModalLabel' aria-hidden='true'>
+                  <div class='modal-dialog modal-fullscreen'>
+                    <div class='modal-content'>
+                      <div class='modal-header'>
+                        <h5 class='modal-title' id='textModalLabel2'>
+                          <span>{"target":"whole_rows"} txt 50.00%%</span>
+                          <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </h5>
+                      </div>
+                      <div class='modal-body'><!-- body -->
+                        <iframe src='TC11/20220206_214943/objects/9e9f976eed10c8b1d8f60e83c26bcf37ba55459b.html' title='TextDiff'></iframe>
+                      </div>
+                      <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='show-detail'>
+                <h2>left</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt' target='left'>TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input1"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>right</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt' target='right'>TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input2"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>diff</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/9e9f976eed10c8b1d8f60e83c26bcf37ba55459b.html' target='diff'>TC11/20220206_214943/objects/9e9f976eed10c8b1d8f60e83c26bcf37ba55459b.html</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>html</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span>"category":</span>
+                    <span>"diff"</span>
+                    <span>, </span>
+                    <span>"left":</span>
+                    <span>"59ace549aad07a80f2d634eb9c08bf2fab33feab"</span>
+                    <span>, </span>
+                    <span>"ratio":</span>
+                    <span>"50.00%"</span>
+                    <span>, </span>
+                    <span>"right":</span>
+                    <span>"e82f4b76123a85f374f3b0aa756225361df29428"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='accordion3' class='accordion-item'>
+          <h2 id='heading3' class='accordion-header'>
+            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse3' area-expanded='false' aria-controls='collapse3'>
+              <span class='ratio warning'>50.00%</span>
+              <span class='fileType'>txt</span>
+              <span class='description'>{"target":"whole_rows"}</span>
+            </button>
+          </h2>
+          <div id='collapse3' class='according-collapse collapse' aria-labelledby='heading3' data-bs-parent='#diff-contents'>
+            <div class='accordion-body'>
+              <div class='show-diff'><!-- Button trigger modal -->
+                <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#textModal3'>Show diff in Modal</button><!-- Modal to show texts diff -->
+                <div class='modal fade' id='textModal3' tabindex='-1' aria-labelledby='textModalLabel' aria-hidden='true'>
+                  <div class='modal-dialog modal-fullscreen'>
+                    <div class='modal-content'>
+                      <div class='modal-header'>
+                        <h5 class='modal-title' id='textModalLabel3'>
+                          <span>{"target":"whole_rows"} txt 50.00%%</span>
+                          <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </h5>
+                      </div>
+                      <div class='modal-body'><!-- body -->
+                        <iframe src='TC11/20220206_214943/objects/5f017d6ea3742744d7d67d42e3acfef6df055281.html' title='TextDiff'></iframe>
+                      </div>
+                      <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='show-detail'>
+                <h2>left</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt' target='left'>TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input2"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>right</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt' target='right'>TC11/20220206_214943/objects/59ace549aad07a80f2d634eb9c08bf2fab33feab.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input1"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>diff</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/5f017d6ea3742744d7d67d42e3acfef6df055281.html' target='diff'>TC11/20220206_214943/objects/5f017d6ea3742744d7d67d42e3acfef6df055281.html</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>html</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span>"category":</span>
+                    <span>"diff"</span>
+                    <span>, </span>
+                    <span>"left":</span>
+                    <span>"e82f4b76123a85f374f3b0aa756225361df29428"</span>
+                    <span>, </span>
+                    <span>"ratio":</span>
+                    <span>"50.00%"</span>
+                    <span>, </span>
+                    <span>"right":</span>
+                    <span>"59ace549aad07a80f2d634eb9c08bf2fab33feab"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='accordion4' class='accordion-item'>
+          <h2 id='heading4' class='accordion-header'>
+            <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#collapse4' area-expanded='false' aria-controls='collapse4'>
+              <span class='ratio '>0.00%</span>
+              <span class='fileType'>txt</span>
+              <span class='description'>{"target":"whole_rows"}</span>
+            </button>
+          </h2>
+          <div id='collapse4' class='according-collapse collapse' aria-labelledby='heading4' data-bs-parent='#diff-contents'>
+            <div class='accordion-body'>
+              <div class='show-diff'><!-- Button trigger modal -->
+                <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#textModal4'>Show diff in Modal</button><!-- Modal to show texts diff -->
+                <div class='modal fade' id='textModal4' tabindex='-1' aria-labelledby='textModalLabel' aria-hidden='true'>
+                  <div class='modal-dialog modal-fullscreen'>
+                    <div class='modal-content'>
+                      <div class='modal-header'>
+                        <h5 class='modal-title' id='textModalLabel4'>
+                          <span>{"target":"whole_rows"} txt 0.00%%</span>
+                          <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </h5>
+                      </div>
+                      <div class='modal-body'><!-- body -->
+                        <iframe src='TC11/20220206_214943/objects/1ad826e847fc94b77ab099abf3468e52754e93ff.html' title='TextDiff'></iframe>
+                      </div>
+                      <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='show-detail'>
+                <h2>left</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt' target='left'>TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input2"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>right</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt' target='right'>TC11/20220206_214943/objects/e82f4b76123a85f374f3b0aa756225361df29428.txt</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>txt</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span class='ignoring-key'>"input":</span>
+                    <span>"input2"</span>
+                    <span>, </span>
+                    <span>"target":</span>
+                    <span>"whole_rows"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class='show-detail'>
+                <h2>diff</h2>
+                <dl class='detail'>
+                  <dt>URL</dt>
+                  <dd>
+                    <a href='TC11/20220206_214943/objects/1ad826e847fc94b77ab099abf3468e52754e93ff.html' target='diff'>TC11/20220206_214943/objects/1ad826e847fc94b77ab099abf3468e52754e93ff.html</a>
+                  </dd>
+                  <dt>fileType</dt>
+                  <dd>html</dd>
+                  <dt>metadata</dt>
+                  <dd>
+                    <span>{</span>
+                    <span>"category":</span>
+                    <span>"diff"</span>
+                    <span>, </span>
+                    <span>"left":</span>
+                    <span>"e82f4b76123a85f374f3b0aa756225361df29428"</span>
+                    <span>, </span>
+                    <span>"ratio":</span>
+                    <span>"0.00%"</span>
+                    <span>, </span>
+                    <span>"right":</span>
+                    <span>"e82f4b76123a85f374f3b0aa756225361df29428"</span>
+                    <span>}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- Bootstrap -->
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js' integrity='sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj' crossorigin='anonymous'></script>
+  </body>
+</html>
