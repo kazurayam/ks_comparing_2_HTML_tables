@@ -1,0 +1,6 @@
+{"rowKey":["Customer A"],"rowValues":["Customer A","Retail B","abc"],"keyRange":[0]}
+{"rowKey":["Customer C"],"rowValues":["Customer C","Retail B","ghi"],"keyRange":[0]}
+{"rowKey":["Customer D"],"rowValues":["Customer D","Key Account","jkl"],"keyRange":[0]}
+{"rowKey":["Customer E"],"rowValues":["Customer E","Retail A","lmn"],"keyRange":[0]}
+{"rowKey":["Customer F"],"rowValues":["Customer F","Key Account","opq"],"keyRange":[0]}
+{"rowKey":["Customer G"],"rowValues":["Customer G","Key Account","rst"],"keyRange":[0]}

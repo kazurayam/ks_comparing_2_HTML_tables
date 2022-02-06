@@ -1,0 +1,6 @@
+12be67947536a9308f72f2820b683b8165e61c3d	html	{"category":"diff", "left":"8b3572ef14e60ec57ccee0008dd4da83d97f693e", "ratio":"0.00%", "right":"8b3572ef14e60ec57ccee0008dd4da83d97f693e"}
+3d1de34f104810f659e762384f186bf3b4926126	html	{"category":"diff", "left":"8b3572ef14e60ec57ccee0008dd4da83d97f693e", "ratio":"50.00%", "right":"cc1c22a73a74855c1b836d71373d73a63de6a482"}
+14b24e27ef813c40811215421f33170a85c7085f	html	{"category":"diff", "left":"cc1c22a73a74855c1b836d71373d73a63de6a482", "ratio":"0.00%", "right":"cc1c22a73a74855c1b836d71373d73a63de6a482"}
+5dddd15b2638ad8944f0a37c63888220c2cd4df4	html	{"category":"diff", "left":"cc1c22a73a74855c1b836d71373d73a63de6a482", "ratio":"50.00%", "right":"8b3572ef14e60ec57ccee0008dd4da83d97f693e"}
+cc1c22a73a74855c1b836d71373d73a63de6a482	txt	{"input":"input1", "target":"whole_rows"}
+8b3572ef14e60ec57ccee0008dd4da83d97f693e	txt	{"input":"input2", "target":"whole_rows"}

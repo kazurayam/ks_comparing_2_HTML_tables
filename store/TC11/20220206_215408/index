@@ -1,0 +1,6 @@
+d85a9f24b0290a666594eda1ed71a96d0a018c48	html	{"category":"diff", "left":"59ace549aad07a80f2d634eb9c08bf2fab33feab", "ratio":"0.00%", "right":"59ace549aad07a80f2d634eb9c08bf2fab33feab"}
+afa7a29a6cf13f6b70d7114212dc81056f906baa	html	{"category":"diff", "left":"59ace549aad07a80f2d634eb9c08bf2fab33feab", "ratio":"50.00%", "right":"e82f4b76123a85f374f3b0aa756225361df29428"}
+b78e32222f967c882a5013786a59fcef5b0987e9	html	{"category":"diff", "left":"e82f4b76123a85f374f3b0aa756225361df29428", "ratio":"0.00%", "right":"e82f4b76123a85f374f3b0aa756225361df29428"}
+56a10e6f1bf4a49f9a0834e2ac854f6e736a18b9	html	{"category":"diff", "left":"e82f4b76123a85f374f3b0aa756225361df29428", "ratio":"50.00%", "right":"59ace549aad07a80f2d634eb9c08bf2fab33feab"}
+59ace549aad07a80f2d634eb9c08bf2fab33feab	txt	{"input":"input1", "target":"whole_rows"}
+e82f4b76123a85f374f3b0aa756225361df29428	txt	{"input":"input2", "target":"whole_rows"}
