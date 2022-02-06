@@ -1,0 +1,129 @@
+{
+  "keywordFileContentHash": "802F094D7DA433EE05DF8DDCFC58E825",
+  "keywordClasses": [
+    {
+      "name": "com.kazurayam.ks.HTMLTableComparator",
+      "keywordMethods": [
+        {
+          "name": "sortTableBody",
+          "parameters": [
+            {
+              "name": "table",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "com.kms.katalon.core.testobject.TestObject",
+                "unresolvedClassName": "TestObject",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "keyRange",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "groovy.lang.Range",
+                "unresolvedClassName": "Range",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "rowKeys",
+          "parameters": [
+            {
+              "name": "table",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "com.kms.katalon.core.testobject.TestObject",
+                "unresolvedClassName": "TestObject",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "keyRange",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "groovy.lang.Range",
+                "unresolvedClassName": "Range",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "tablesHaveSameKeys",
+          "parameters": [
+            {
+              "name": "table1",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "com.kms.katalon.core.testobject.TestObject",
+                "unresolvedClassName": "TestObject",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "table2",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "com.kms.katalon.core.testobject.TestObject",
+                "unresolvedClassName": "TestObject",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "keyRange",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "groovy.lang.Range",
+                "unresolvedClassName": "Range",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "com.kazurayam.ks.HTMLTableComparator$Record",
+      "keywordMethods": []
+    },
+    {
+      "name": "com.kazurayam.ks.HTMLTableComparator$RowKey",
+      "keywordMethods": []
+    },
+    {
+      "name": "com.kazurayam.ks.HTMLTableComparator$RowValues",
+      "keywordMethods": []
+    }
+  ],
+  "javadocParsed": false
+}
