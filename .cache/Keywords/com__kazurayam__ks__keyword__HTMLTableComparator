@@ -1,8 +1,8 @@
 {
-  "keywordFileContentHash": "86BD757B0CF9A32655A5990B6906B1A1",
+  "keywordFileContentHash": "02EF2A4CC0486F2704BD829E09777D94",
   "keywordClasses": [
     {
-      "name": "com.kazurayam.ks.HTMLTableComparator",
+      "name": "com.kazurayam.ks.keyword.HTMLTableComparator",
       "keywordMethods": [
         {
           "name": "sortTableBody",
@@ -43,8 +43,7 @@
                 "errorOnParsing": false
               }
             }
-          ],
-          "javadoc": ""
+          ]
         },
         {
           "name": "rowKeys",
@@ -85,8 +84,7 @@
                 "errorOnParsing": false
               }
             }
-          ],
-          "javadoc": ""
+          ]
         },
         {
           "name": "tablesHaveSameKeys",
@@ -140,23 +138,22 @@
                 "errorOnParsing": false
               }
             }
-          ],
-          "javadoc": ""
+          ]
         }
       ]
     },
     {
-      "name": "com.kazurayam.ks.HTMLTableComparator$Record",
+      "name": "com.kazurayam.ks.keyword.HTMLTableComparator$Record",
       "keywordMethods": []
     },
     {
-      "name": "com.kazurayam.ks.HTMLTableComparator$RowKey",
+      "name": "com.kazurayam.ks.keyword.HTMLTableComparator$RowKey",
       "keywordMethods": []
     },
     {
-      "name": "com.kazurayam.ks.HTMLTableComparator$RowValues",
+      "name": "com.kazurayam.ks.keyword.HTMLTableComparator$RowValues",
       "keywordMethods": []
     }
   ],
-  "javadocParsed": true
+  "javadocParsed": false
 }

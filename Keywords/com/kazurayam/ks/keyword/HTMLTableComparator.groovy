@@ -1,4 +1,4 @@
-package com.kazurayam.ks
+package com.kazurayam.ks.keyword
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.testobject.TestObject
@@ -6,21 +6,21 @@ import com.kms.katalon.core.testobject.TestObject
 class HTMLTableComparator {
 
 	@Keyword
-	List<Record> sortTableBody(TestObject table, Range keyRange) {
+	List<Record> sortTableBody(TestObject table, Range<Integer> keyRange) {
 	}
 
 	@Keyword
-	Set<RowKey> rowKeys(TestObject table, Range keyRange) {
+	Set<RowKey> rowKeys(TestObject table, Range<Integer> keyRange) {
 	}
 
 	@Keyword
-	Boolean tablesHaveSameKeys(TestObject table1, TestObject table2, Range keyRange) {
+	Boolean tablesHaveSameKeys(TestObject table1, TestObject table2, Range<Integer> keyRange) {
 	}
 
 	/**
 	 * 
 	 */
-	static class Record implements Comparable<Record> {
+	static class Record {
 		private final RowValues rowValues;
 		private final Range<Integer> keyRange;
 		private final RowKey rowKey;
@@ -68,10 +68,6 @@ class HTMLTableComparator {
 		String toString() {
 			throw new UnsupportedOperationException("TODO");
 		}
-		@Override
-		int compareTo(Object obj) {
-			throw new UnsupportedOperationException("TODO");
-		}
 	}
 
 	/**
@@ -80,7 +76,7 @@ class HTMLTableComparator {
 	public static class RowKey {
 		private final List<String> keyElements = new ArrayList<>()
 		private final Range<Integer> keyRange;
-		
+
 		RowKey(List<String> row, Range keyRange) {
 			Objects.requireNonNull(row)
 			Objects.requireNonNull(keyRange)
@@ -88,14 +84,14 @@ class HTMLTableComparator {
 			this.keyElements.addAll(getKeyElements(row, keyRange))
 			this.keyRange = keyRange
 		}
-		
+
 		private void validateParams(List<String> row, Range keyRange) {
 			assert 0 <= row.size()
 			assert 0 <= keyRange.getFrom()
 			assert keyRange.getFrom() <= keyRange.getTo()
 			assert keyRange.getTo() < row.size()
 		}
-		
+
 		private List<String> getKeyElements(List<String> row, Range<Integer> keyRange) {
 			List<String> keyElements = new ArrayList<>();
 			for (int i = keyRange.getFrom(); i <= keyRange.getTo(); i++) {
@@ -103,15 +99,15 @@ class HTMLTableComparator {
 			}
 			return keyElements
 		}
-		
+
 		List<String> keyElements() {
 			return this.keyElements
 		}
-		
+
 		Range keyRange() {
 			return this.keyRange
 		}
-		
+
 		@Override
 		boolean equals(Object obj) {
 			if (!(obj instanceof RowKey)) {
@@ -130,7 +126,7 @@ class HTMLTableComparator {
 			}
 			return equality
 		}
-		
+
 		@Override
 		int hashCode() {
 			int hash = 7;
@@ -139,7 +135,7 @@ class HTMLTableComparator {
 			}
 			return hash;
 		}
-		
+
 		@Override
 		String toString() {
 			StringBuilder sb = new StringBuilder()
@@ -157,22 +153,22 @@ class HTMLTableComparator {
 		}
 	}
 
-	
+
 	/**
 	 * 
 	 */
 	public static class RowValues {
 		private final List<String> values;
-		
+
 		RowValues(List<String> values) {
 			Objects.requireNonNull(values)
 			this.values = values;
 		}
-		
+
 		List<String> values() {
 			return this.values
 		}
-		
+
 		@Override
 		boolean equals(Object obj) {
 			if (!(obj instanceof RowValues)) {
@@ -191,7 +187,7 @@ class HTMLTableComparator {
 			}
 			return equality;
 		}
-		
+
 		@Override
 		int hashCode() {
 			int hash = 7;
@@ -200,7 +196,7 @@ class HTMLTableComparator {
 			}
 			return hash;
 		}
-		
+
 		@Override
 		String toString() {
 			StringBuilder sb = new StringBuilder()

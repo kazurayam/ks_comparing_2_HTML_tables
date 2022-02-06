@@ -1,4 +1,4 @@
-package com.kazurayam.ks
+package com.kazurayam.ks.keyword
 
 import static org.junit.Assert.*
 
