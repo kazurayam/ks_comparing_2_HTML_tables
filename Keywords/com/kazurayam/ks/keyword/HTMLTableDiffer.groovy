@@ -22,11 +22,19 @@ class HTMLTableDiffer {
 
 	HTMLTableDiffer() {}
 
+	/**
+	 * 
+	 * @param data1
+	 * @param data2
+	 * @param output
+	 * @return
+	 */
 	boolean diff(List<List<String>> data1, List<List<String>> data2, File output) {
 		Objects.requireNonNull(data1)
 		Objects.requireNonNull(data2)
 		Objects.requireNonNull(output)
 		ensureParentDirs(output)
+		//
 		List<String> lines1 =
 				data1.stream()
 				.map({ List<String> row -> new Record(row, 0..0) })
@@ -37,15 +45,45 @@ class HTMLTableDiffer {
 				.map({ List<String> row -> new Record(row, 0..0) })
 				.map({ Record rec -> rec.toJson() })
 				.collect(Collectors.toList())
-
 		// generating diff info
 		Patch<String> diff = DiffUtils.diff(lines1, lines2)
-
 		// generating unified diff format
 		List<String> unifiedDiff =
-				UnifiedDiffUtils.generateUnifiedDiff("left", "right", lines1, diff, 3)
+				UnifiedDiffUtils.generateUnifiedDiff("left", "right", lines1, diff, 0)
 		write(unifiedDiff, output)
+		return unifiedDiff.size() > 0
+	}
 
+	/**
+	 * 
+	 * @param data1
+	 * @param data2
+	 * @param keyRange
+	 * @param output
+	 * @return
+	 */
+	boolean diffKeys(List<List<String>> data1, List<List<String>> data2, Range<Integer> keyRange, File output) {
+		Objects.requireNonNull(data1)
+		Objects.requireNonNull(data2)
+		Objects.requireNonNull(keyRange)
+		Objects.requireNonNull(output)
+		ensureParentDirs(output)
+		List<String> lines1 =
+				data1.stream()
+				.map({ List<String> row -> new Record(row, keyRange) })
+				.map({ Record rec -> rec.rowKey().toJson() })
+				.collect(Collectors.toList())
+		List<String> lines2 =
+				data2.stream()
+				.map({ List<String> row -> new Record(row, keyRange) })
+				.map({ Record rec -> rec.rowKey().toJson() })
+				.collect(Collectors.toList())
+		// generating diff info
+		Patch<String> diff = DiffUtils.diff(lines1, lines2)
+		// generating unified diff format
+		List<String> unifiedDiff =
+				UnifiedDiffUtils.generateUnifiedDiff("left", "right", lines1, diff, 0)
+		write(unifiedDiff, output)
 		return unifiedDiff.size() > 0
 	}
 

@@ -1,12 +1,8 @@
 {
-  "keywordFileContentHash": "82A5478489B88BFA3359F10E240C3744",
+  "keywordFileContentHash": "B588FD4BDEAC5C4118AAA50D085F4FF2",
   "keywordClasses": [
     {
       "name": "com.kazurayam.ks.keyword.HTMLTableDiffer",
-      "keywordMethods": []
-    },
-    {
-      "name": "com.kazurayam.ks.keyword.HTMLTableDiffer$Records",
       "keywordMethods": []
     },
     {
@@ -22,5 +18,5 @@
       "keywordMethods": []
     }
   ],
-  "javadocParsed": false
+  "javadocParsed": true
 }
