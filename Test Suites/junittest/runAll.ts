@@ -12,6 +12,12 @@
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>227203f7-7c71-457e-80c9-ddc19d98e54b</testSuiteGuid>
    <testCaseLink>
+      <guid>0dff6f36-81c7-4062-9261-0f79dd0a72c0</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/junittest/com.kazurayam.ks.keyword/HTMLTableComparator_Record_TestRunner</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
       <guid>78fb8554-9914-4737-b685-b33c61719ec4</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>

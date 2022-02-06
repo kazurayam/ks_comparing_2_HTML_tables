@@ -3,6 +3,8 @@ package com.kazurayam.ks.keyword
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.testobject.TestObject
 
+import oracle.jdbc.replay.driver.TxnReplayableOthers
+
 class HTMLTableComparator {
 
 	@Keyword
@@ -20,53 +22,82 @@ class HTMLTableComparator {
 	/**
 	 * 
 	 */
-	static class Record {
-		private final RowValues rowValues;
-		private final Range<Integer> keyRange;
-		private final RowKey rowKey;
+	static class Record implements Comparable<Record> {
+		private final RowValues rowValues
+		private final Range<Integer> keyRange
+		private final RowKey rowKey
+
 		Record(List<String> row, Range<Integer> keyRange) {
-			this.row = row;
-			int width = row.size();
-			if (validateRange(row.size(), keyRange)) {
-				throw new IllegalArgumentException("keyRange(${keyRange}) must be in the range of 0..<" + row.size());
-			}
-			this.keyRange = keyRange;
+			Objects.requireNonNull(row)
+			Objects.requireNonNull(keyRange)
+			validateRange(row, keyRange)
+			this.rowValues = new RowValues(row)
+			this.keyRange = keyRange
+			this.rowKey = new RowKey(row, keyRange)
 		}
-		private boolean validateRange(Integer width, Range<Integer> keyRange) {
-			if (keyRange.getFrom() <= keyRange.getTo() &&
-			0 <= keyRange.getFrom() && keyRange.getFrom() < width &&
-			0 <= keyRange.getTo() && keyRange.getTo() < width) {
-				return true
-			} else {
-				return false
-			}
+
+		private void validateRange(List<String> row, Range<Integer> keyRange) {
+			assert keyRange.getFrom() <= keyRange.getTo()
+			assert 0 <= keyRange.getFrom()
+			assert keyRange.getFrom() < row.size()
+			assert 0 < keyRange.getTo()
+			assert keyRange.getTo() < row.size()
 		}
-		Range<Integer> keyRange() {
-			return this.keyRange;
-		}
+
 		RowValues rowValues() {
-			return this.rowValues;
+			return this.rowValues
 		}
+
+		Range<Integer> keyRange() {
+			return this.keyRange
+		}
+
 		RowKey rowKey() {
-			return new RowKey(rowValues, keyRange())
+			return this.rowKey
 		}
+
+		boolean rowKeyEquals(Record other) {
+			return this.rowKey().equals(other.rowKey())
+		}
+
 		@Override
 		boolean equals(Object obj) {
 			if (!(obj instanceof Record)) {
 				return false
 			}
 			Record other = (Record)obj
-			return this.rowValues().equals(other.rowValues())
+			return this.rowValues().equals(other.rowValues()) &&
+					this.rowKey().equals(other.rowKey())
 		}
+
 		@Override
 		int hashCode() {
 			int hash = 7;
 			hash = 31 * hash + this.rowValues().hashCode();
 			return hash;
 		}
+
 		@Override
 		String toString() {
-			throw new UnsupportedOperationException("TODO");
+			StringBuilder sb = new StringBuilder()
+			sb.append("{")
+			sb.append("\"rowKey\":\"" + this.rowKey().toString() + "\"")
+			sb.append(",")
+			sb.append("\"rowValues\":\"" + this.rowValues().toString() + "\"")
+			sb.append(",")
+			sb.append("\"keyRange\":\"" + this.keyRange().toString() + "\"")
+			sb.append("}")
+			return sb.toString()
+		}
+
+		@Override
+		int compareTo(Record other) {
+			int keyComparison = this.rowKey() <=> other.rowKey()
+			if (keyComparison == 0) {
+				return this.rowValues() <=> other.rowValues()
+			} else {
+				return keyComparison
+			}
 		}
 	}
 
@@ -77,7 +108,7 @@ class HTMLTableComparator {
 		private final List<String> keyElements = new ArrayList<>()
 		private final Range<Integer> keyRange;
 
-		RowKey(List<String> row, Range keyRange) {
+		RowKey(List<String> row, Range<Integer> keyRange) {
 			Objects.requireNonNull(row)
 			Objects.requireNonNull(keyRange)
 			validateParams(row, keyRange)
@@ -85,7 +116,7 @@ class HTMLTableComparator {
 			this.keyRange = keyRange
 		}
 
-		private void validateParams(List<String> row, Range keyRange) {
+		private void validateParams(List<String> row, Range<Integer> keyRange) {
 			assert 0 <= row.size()
 			assert 0 <= keyRange.getFrom()
 			assert keyRange.getFrom() <= keyRange.getTo()
@@ -176,7 +207,7 @@ class HTMLTableComparator {
 	/**
 	 * 
 	 */
-	public static class RowValues {
+	public static class RowValues implements Comparable<RowValues> {
 		private final List<String> values;
 
 		RowValues(List<String> values) {
@@ -230,6 +261,23 @@ class HTMLTableComparator {
 			}
 			sb.append("]")
 			return sb.toString()
+		}
+		
+		@Override
+		int compareTo(RowValues other) {
+			if (this.values().size() < other.values().size()) {
+				return -1
+			} else if (this.values().size() == other.values().size()) {
+				for (int i = 0; i < this.values.size(); i++) {
+					int comparison = this.values().get(i) <=> other.values().get(i)
+					if (comparison != 0) {
+						return comparison
+					}
+				}
+				return 0
+			} else {
+				return 1
+			}
 		}
 	}
 }

@@ -52,4 +52,50 @@ public class HTMLTableComparator_RowValues_Test {
 		RowValues rv1 = new RowValues(l1)
 		assertEquals("[a]", rv1.toString())
 	}
+	
+	@Test
+	public void test_compareTo_0() {
+		List<String> l1 = ["a"];
+		List<String> l2 = ["a"]
+		RowValues rv1 = new RowValues(l1)
+		RowValues rv2 = new RowValues(l2)
+		assertEquals(0, rv1.compareTo(rv2))
+	}
+	
+	@Test
+	public void test_compareTo_minus_by_value() {
+		List<String> l1 = ["a"];
+		List<String> l2 = ["b"]
+		RowValues rv1 = new RowValues(l1)
+		RowValues rv2 = new RowValues(l2)
+		assertEquals(-1, rv1.compareTo(rv2))
+	}
+	
+	@Test
+	public void test_compareTo_plus_by_value() {
+		List<String> l1 = ["b"];
+		List<String> l2 = ["a"]
+		RowValues rv1 = new RowValues(l1)
+		RowValues rv2 = new RowValues(l2)
+		assertEquals(1, rv1.compareTo(rv2))
+	}
+	
+	@Test
+	public void test_compareTo_minus_by_size() {
+		List<String> l1 = ["a"];
+		List<String> l2 = ["a", "b"]
+		RowValues rv1 = new RowValues(l1)
+		RowValues rv2 = new RowValues(l2)
+		assertEquals(-1, rv1.compareTo(rv2))
+	}
+	
+	@Test
+	public void test_compareTo_plus_by_size() {
+		List<String> l1 = ["a", "b"];
+		List<String> l2 = ["a"]
+		RowValues rv1 = new RowValues(l1)
+		RowValues rv2 = new RowValues(l2)
+		assertEquals(1, rv1.compareTo(rv2))
+	}
+	
 }
