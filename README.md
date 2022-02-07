@@ -6,6 +6,8 @@ This project is made in the hope to propose a solution to a topic in the Katalon
 
 -   [Comparing 2 tables](https://forum.katalon.com/t/comparing-two-tables/62051/5)
 
+@GIO Thank you for providing us sample data
+
 This project was made and tested using Katalon Studio v8.2.5, but it should work with any KS version.
 
 ## Problem to solve.
@@ -54,15 +56,15 @@ I made 2 HTML files and included in this project.
             <tr><th>CUSTOMER</th><th>CHANNEL</th><th>BRANCHES</th></tr>
           </thead>
           <tbody>
-            <tr><td>Customer A</td><td>Retail B</td><td>abc</td></tr>
+            <tr><td>Customer A</td><td>Retail B</td><td>x</td></tr>
             <!--
-            <tr><td>Customer B</td><td>Retail A</td><td>def</td></tr>
+            <tr><td>Customer B</td><td>Retail A</td><td>x</td></tr>
             -->
-            <tr><td>Customer C</td><td>Retail B</td><td>ghi</td></tr>
-            <tr><td>Customer D</td><td>Key Account</td><td>jkl</td></tr>
-            <tr><td>Customer E</td><td>Retail A</td><td>lmn</td></tr>
-            <tr><td>Customer F</td><td>Key Account</td><td>opq</td></tr>
-            <tr><td>Customer G</td><td>Key Account</td><td>rst</td></tr>
+            <tr><td>Customer C</td><td>Retail B</td><td>x</td></tr>
+            <tr><td>Customer D</td><td>Key Account</td><td>x</td></tr>
+            <tr><td>Customer E</td><td>Retail A</td><td>x</td></tr>
+            <tr><td>Customer F</td><td>Key Account</td><td>x</td></tr>
+            <tr><td>Customer G</td><td>Key Account</td><td>x</td></tr>
           </tbody>
         </table>
       </div>
@@ -92,15 +94,15 @@ I made 2 HTML files and included in this project.
             <tr><th>CUSTOMER</th><th>CHANNEL</th><th>BRANCHES</th></tr>
           </thead>
           <tbody>
-            <tr><td>Customer D</td><td>Key Account</td><td>jkl</td></tr>
-            <tr><td>Customer B</td><td>Retail A</td><td>def</td></tr>
-            <tr><td>Customer C</td><td>Retail B</td><td>ghi</td></tr>
-            <tr><td>Customer A</td><td>Retail B</td><td>abc</td></tr>
-            <tr><td>Customer G</td><td>Key Account</td><td>rst</td></tr>
-            <tr><td>Customer E</td><td>Retail A</td><td>lmn</td></tr>
+            <tr><td>Customer A</td><td>Retail B</td><td>x</td></tr>
+            <tr><td>Customer D</td><td>Key Account</td><td>x</td></tr>
+            <tr><td>Customer B</td><td>Retail A</td><td>x</td></tr>
+            <tr><td>Customer C</td><td>Retail B</td><td>x</td></tr>
+            <tr><td>Customer E</td><td>Retail A</td><td>x</td></tr>
             <!--
-            <tr><td>Customer F</td><td>Key Account</td><td>opq</td></tr>
+            <tr><td>Customer F</td><td>Key Account</td><td>x</td></tr>
             -->
+            <tr><td>Customer G</td><td>Key Account</td><td>x</td></tr>
           </tbody>
         </table>
       </div>
@@ -143,13 +145,14 @@ Both of `TC1` and `TC2` calls a separated Test Case `compare2datasets`. This cod
     ];
 
     List<List<String>> input2 = [
-            [ "Customer D", "Key Account" ],
-            [ "Customer B", "Retail A" ],
-            [ "Customer C", "Retail B" ],
-            [ "Customer A", "Retail B" ],
-            [ "Customer G", "Key Account" ],
-            [ "Customer E", "Retail A" ],
-            // [ "Customer F", "Key Account" ],
+            [ "Customer A", "Retail B", "x"],
+            [ "Customer D", "Key Account" , "x"],
+            [ "Customer B", "Retail A" , "x"],
+            [ "Customer C", "Retail B" , "x"],
+            [ "Customer E", "Retail A" , "x"],
+            // [ "Customer F", "Key Account" , "x"],
+            [ "Customer G", "Key Account" , "x"]
+            
     ];
 
     WebUI.callTestCase(findTestCase("compare2datasets"), ["data1": input1, "data2": input2])
@@ -195,7 +198,6 @@ Both of `TC1` and `TC2` calls a separated Test Case `compare2datasets`. This cod
         WebUI.navigateToUrl(url.toString())
         WebDriver driver = DriverFactory.getWebDriver();
         WebElement table = driver.findElement(By.xpath("//table[@id='${tableId}']"))
-        return scrapeDataOutOfTable(table)
         if (table != null) {
             data.addAll(scrapeDataOutOfTable(table))
         } else {
@@ -408,7 +410,142 @@ However, I think that it is not a good idea to perform such full stack programmi
 
 ## Conclusion
 
-You should not try to write "compare 2 tables" in Katalon Studio. Too much complexed UI automation code will not be well maintained long. Sooner or later (in a few months) it will break when the HTML design changed. Then you will remove the broken UI test out of the Test Suite. Your efforts will be in vain.
+You should not try to write "compare 2 tables" in Katalon Studio. Too much complex UI automation code will not be well maintained long. Sooner or later (in a few months) it will break when the HTML design changed. Then you will remove the broken UI test out of the Test Suite. Your efforts will be in vain.
 
 @author kazurayam
 @date 4 Feb, 2022
+
+## APPENDIX
+
+I have got another solution to the problem how to compare 2 HTML tables. Let me explain.
+
+Previously I developed and published a project named [Visual Inspection in Katalon Studio](https://forum.katalon.com/t/visual-inspection-in-katalon-studio-reborn/57440). This project can compare some pairs of web pages of a single Web application (e.g, the Production and the Development env) by taking screenshot images and scraping HTML source codes. The [materialstore](https://github.com/kazurayam/materialstore) library, on which the "Visual Inspection" project is built upon, has a good capability of making diff info of 2 text files. I found that the materialstore library is applicable to solve the "compare 2 tables" problem as well.
+
+I made a sample that does the following steps:
+
+1.  I developed a Test Case plus a Custom Keyword.
+
+2.  The Test Case should navigate to URL of a web page with `<table>`. It will scrape the text `<table>` content and transform it to a Java object in the data type of `<List<List<String>>>` type.
+
+3.  Repeat this for 2 URLs. You will get 2 objects.
+
+4.  The Test Case will call your Custom Keyword. Your Keyword class should extend [`com.kazurayam.materialstore.textgrid.DefaultTextGridDiffer`](https://github.com/kazurayam/materialstore/blob/main/src/main/groovy/com/kazurayam/materialstore/textgrid/DefaultTextGridDiffer.groovy). This class implements `diffTextGrids()` method. Your Test Case will call this method while passing 3 parameters.
+
+    -   the content of the 1st `<table>` in the data type of `List<List<String>>`
+
+    -   the content of the 2nd `<table>` in the data type of `List<List<String>>`
+
+    -   the variable in the type of `java.lang.nio.file.Path` that represents a file where the report will be written into
+
+### Sample output
+
+When you run "Test Cases/TC2x", you will find a HTML file created at `<projectDir>/store/TC2x-index.html`. See a sample in action:
+
+-   [store/TC2-index.html](https://kazurayam.github.io/ks_comparing_2_HTML_tables/store/TC2x-index.html)
+
+![TC2x index](./docs/images/TC2x-index.png)
+
+The diff of 2 `<table>` tags is nicely presented, isn’t it?
+
+### Source code
+
+-   [Test Cases/TC2x](Scripts/TC2x/Script1644159687647.groovy)
+
+<!-- -->
+
+    import java.nio.file.Path
+    import java.nio.file.Paths
+
+    import com.kms.katalon.core.configuration.RunConfiguration
+    import com.kms.katalon.core.util.KeywordUtil
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+    import your.ks.keyword.YourTextGridDiffer
+
+    Path projectDir = Paths.get(RunConfiguration.getProjectDir())
+    Path webDir = projectDir.resolve("Include/web")
+
+    // open a web page in browser, scrape data out of a <table id="table1">
+    URL page1 = webDir.resolve("page1.html").toFile().toURI().toURL()
+    List<List<String>> t1 = YourTextGridDiffer.getDataFromPage(page1, 'table1')
+
+    // open another web page in browser, scrape data out of a <table id="table2">
+    URL page2 = webDir.resolve("page2.html").toFile().toURI().toURL()
+    List<List<String>> t2 = YourTextGridDiffer.getDataFromPage(page2, 'table2')
+
+    // convert data into JSON files, make the diff information, compile a report
+    YourTextGridDiffer differ = new YourTextGridDiffer()
+    int warnings = differ.diffTextGrids(t1, t2, "TC2x")
+
+    WebUI.comment("the report is found at " + differ.getReportPathRelativeTo(projectDir))
+
+    if (warnings > 0) {
+        KeywordUtil.markWarning("found ${warnings} differences.")
+    }
+
+-   [Keyword/your.ks.keyword.YourTextGridDiffer](Keywords/your/ks/keyword/YourTextGridDiffer.groovy)
+
+<!-- -->
+
+    package your.ks.keyword
+
+    import org.openqa.selenium.By
+    import org.openqa.selenium.WebDriver
+    import org.openqa.selenium.WebElement
+
+    import com.kazurayam.materialstore.textgrid.DefaultTextGridDiffer
+    import com.kms.katalon.core.util.KeywordUtil
+    import com.kms.katalon.core.webui.driver.DriverFactory
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+    class YourTextGridDiffer extends DefaultTextGridDiffer {
+
+        /**
+         * open a URL in browser, scrape table data, return data as List&lt;List&lt;String>>
+         *
+         * @param url
+         * @return List&lt;List&lt;String>> data collected from a &lt;table>
+         */
+        public static final List<List<String>> getDataFromPage(URL url, String tableId) {
+            List<List<String>> data = new ArrayList<>()
+            WebUI.openBrowser("")
+            WebUI.navigateToUrl(url.toString())
+            WebDriver driver = DriverFactory.getWebDriver();
+            WebElement table = driver.findElement(By.xpath("//table[@id='${tableId}']"))
+            if (table != null) {
+                data.addAll(scrapeDataOutOfTable(table))
+            } else {
+                KeywordUtil.markFailedAndStop("<table id=${tableId}> is not found in ${url}")
+            }
+            WebUI.closeBrowser()
+            return data
+        }
+
+        /**
+         * scrape data out of a &lt;table&gt;
+         */
+        private static final List<List<String>> scrapeDataOutOfTable(WebElement table) {
+            Objects.requireNonNull(table)
+            List<List<String>> data = new ArrayList<>()
+            List<WebElement> trList = table.findElements(By.xpath("tbody/tr"))
+            if (trList != null) {
+                for (WebElement tr in trList) {
+                    List<WebElement> tdList = tr.findElements(By.xpath("td"))
+                    List<String> row = new ArrayList<>()
+                    for (WebElement td in tdList) {
+                        row.add(td.getText())
+                    }
+                    data.add(row)
+                }
+            }
+            return data
+        }
+    }
+
+Please note that `YourTextGridDiffer` class extends [`com.kazurayam.materialstore.textgrid.DefaultTextGridDiffer`](https://github.com/kazurayam/materialstore/blob/main/src/main/groovy/com/kazurayam/materialstore/textgrid/DefaultTextGridDiffer.groovy) which encapsulates all detail processing, which include:
+
+1.  the code is given with 2 Java objects of `<List<List<String>>>` type; it will transform them into JSON texts
+
+2.  the code makes the diff of 2 JSON texts using [java-diff-utils](https://java-diff-utils.github.io/java-diff-utils/)
+
+3.  the code compiles a report in HTML format.

@@ -17,13 +17,13 @@ List<List<String>> input1 = [
 ];
 
 List<List<String>> input2 = [
-		[ "Customer A", "Retail B" ],
-		[ "Customer D", "Key Account" ],
-		[ "Customer B", "Retail A" ],
-		[ "Customer C", "Retail B" ],
-		[ "Customer E", "Retail A" ],
-		// [ "Customer F", "Key Account" ],
-		[ "Customer G", "Key Account" ]
+		[ "Customer A", "Retail B", "x"],
+		[ "Customer D", "Key Account" , "x"],
+		[ "Customer B", "Retail A" , "x"],
+		[ "Customer C", "Retail B" , "x"],
+		[ "Customer E", "Retail A" , "x"],
+		// [ "Customer F", "Key Account" , "x"],
+		[ "Customer G", "Key Account" , "x"]
 		
 ];
 

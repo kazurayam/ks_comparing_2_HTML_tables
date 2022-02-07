@@ -10,7 +10,9 @@ output
 
 !output/.gitkeep
 build
-
+.cache/
 .classpath
 
 .project
+
+/store/

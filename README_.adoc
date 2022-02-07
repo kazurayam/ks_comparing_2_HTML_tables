@@ -6,6 +6,8 @@ This project is made in the hope to propose a solution to a topic in the Katalon
 
 - https://forum.katalon.com/t/comparing-two-tables/62051/5[Comparing 2 tables]
 
+@GIO Thank you for providing us sample data
+
 This project was made and tested using Katalon Studio v8.2.5, but it should work with any KS version.
 
 == Problem to solve.
@@ -142,8 +144,56 @@ However, I think that it is not a good idea to perform such full stack programmi
 
 == Conclusion
 
-You should not try to write "compare 2 tables" in Katalon Studio. Too much complexed UI automation code will not be well maintained long. Sooner or later (in a few months) it will break when the HTML design changed. Then you will remove the broken UI test out of the Test Suite. Your efforts will be in vain.
+You should not try to write "compare 2 tables" in Katalon Studio. Too much complex UI automation code will not be well maintained long. Sooner or later (in a few months) it will break when the HTML design changed. Then you will remove the broken UI test out of the Test Suite. Your efforts will be in vain.
 
 
 @author kazurayam
 @date 4 Feb, 2022
+
+== APPENDIX
+
+I have got another solution to the problem how to compare 2 HTML tables. Let me explain.
+
+Previously I developed and published a project named https://forum.katalon.com/t/visual-inspection-in-katalon-studio-reborn/57440[Visual Inspection in Katalon Studio]. This project can compare some pairs of web pages of a single Web application (e.g, the Production and the Development env) by taking screenshot images and scraping HTML source codes. The https://github.com/kazurayam/materialstore[materialstore] library, on which the "Visual Inspection" project is built upon, has a good capability of making diff info of 2 text files. I found that the materialstore library is applicable to solve the "compare 2 tables" problem as well.
+
+I made a sample that does the following steps:
+
+1. I developed a Test Case plus a Custom Keyword.
+2. The Test Case should navigate to URL of a web page with `<table>`. It will scrape the text `<table>` content and transform it to a Java object in the data type of `<List<List<String>>>` type.
+3. Repeat this for 2 URLs. You will get 2 objects.
+4. The Test Case will call your Custom Keyword. Your Keyword class should extend link:https://github.com/kazurayam/materialstore/blob/main/src/main/groovy/com/kazurayam/materialstore/textgrid/DefaultTextGridDiffer.groovy[`com.kazurayam.materialstore.textgrid.DefaultTextGridDiffer`]. This class implements `diffTextGrids()` method. Your Test Case will call this method while passing 3 parameters.
+  - the content of the 1st `<table>` in the data type of `List<List<String>>`
+  - the content of the 2nd `<table>` in the data type of `List<List<String>>`
+  - the variable in the type of `java.lang.nio.file.Path` that represents a file where the report will be written into
+
+=== Sample output
+
+When you run "Test Cases/TC2x", you will find a HTML file created at `<projectDir>/store/TC2x-index.html`. See a sample in action:
+
+- link:https://kazurayam.github.io/ks_comparing_2_HTML_tables/store/TC2x-index.html[store/TC2-index.html]
+
+image:./docs/images/TC2x-index.png[]
+
+The diff of 2 `<table>` tags is nicely presented, isn't it?
+
+=== Source code
+
+- link:Scripts/TC2x/Script1644159687647.groovy[Test Cases/TC2x]
+
+[source,groovy]
+----
+include::Scripts/TC2x/Script1644159687647.groovy[]
+----
+
+- link:Keywords/your/ks/keyword/YourTextGridDiffer.groovy[Keyword/your.ks.keyword.YourTextGridDiffer]
+
+[source,groovy]
+----
+include::Keywords/your/ks/keyword/YourTextGridDiffer.groovy[]
+----
+
+Please note that `YourTextGridDiffer` class extends link:https://github.com/kazurayam/materialstore/blob/main/src/main/groovy/com/kazurayam/materialstore/textgrid/DefaultTextGridDiffer.groovy[`com.kazurayam.materialstore.textgrid.DefaultTextGridDiffer`] which encapsulates all detail processing, which include: 
+
+1. the code is given with 2 Java objects of `<List<List<String>>>` type; it will transform them into JSON texts
+2. the code makes the diff of 2 JSON texts using link:https://java-diff-utils.github.io/java-diff-utils/[java-diff-utils]
+3. the code compiles a report in HTML format.

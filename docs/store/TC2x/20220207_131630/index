@@ -1,0 +1,4 @@
+b0429cc6c092b268ec4569d34772cb800282e63a	html	{"category":"diff", "left":"a822ea763aecc9f3747a79d17f009302a839424e", "ratio":"50.00%", "right":"b8b5843915c03d8e037864801947db6104946c43"}
+783ab9dfc2004fac3ec8e084f6ac76bf106948b4	html	{"category":"diff", "left":"c5ec946468f34753999916b386c45e2cfc37db9f", "ratio":"28.58%", "right":"0660766592c1f9328f7bf1225aa66c910c681ffb"}
+0660766592c1f9328f7bf1225aa66c910c681ffb	json	{"input":"input2", "target":"keys"}
+b8b5843915c03d8e037864801947db6104946c43	json	{"input":"input2", "target":"rows"}
