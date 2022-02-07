@@ -200,7 +200,7 @@ Please note that `YourTextGridDiffer` class extends link:https://github.com/kazu
 
 === External dependencies
 
-You need to download some externa jar files and located them into the `Drivers` directory of your project. https://github.com/kazurayam/ks_comparing_2_HTML_tables/tree/master/Drivers[] already includes them.
+You need to download some externa jar files and locate them into the `Drivers` directory of your project. https://github.com/kazurayam/ks_comparing_2_HTML_tables/tree/master/Drivers[] already includes them.
 
 1. materialstore version 0.1.11 https://mvnrepository.com/artifact/com.kazurayam/materialstore
 2. java-diff-util version 1.3.0 https://mvnrepository.com/artifact/com.googlecode.java-diff-utils/diffutils
