@@ -20,7 +20,7 @@ List<List<String>> t2 = YourTextGridDiffer.getDataFromPage(page2, 'table2')
 
 // convert data into JSON files, make the diff information, compile a report
 YourTextGridDiffer differ = new YourTextGridDiffer()
-int warnings = differ.diffTextGrids(t1, t2, "TC2x")
+int warnings = differ.diffTextGrids(t1, t2, 0..1, "TC2x")
 
 WebUI.comment("the report is found at " + differ.getReportPathRelativeTo(projectDir))
 

@@ -30,7 +30,7 @@ List<List<String>> input2 = [
 ];
 
 YourTextGridDiffer differ = new YourTextGridDiffer()
-int warnings = differ.diffTextGrids(input1, input2, "TC1x")
+int warnings = differ.diffTextGrids(input1, input2, 0..1, "TC1x")
 
 WebUI.comment("the report is found at " + differ.getReportPathRelativeTo(projectDir))
 
