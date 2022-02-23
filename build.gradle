@@ -2,7 +2,7 @@ plugins {
   id 'java'
 }
 
-version = '0.2.1'
+version = '0.2.2'
 
 ext {
     AUTO_IMPORTED_JAR_PREFIX = 'AUTOIMPORTED_'
@@ -23,7 +23,7 @@ dependencies {
   myconf group: 'io.github.java-diff-utils', name: 'java-diff-utils', version: '4.11'
 
   // https://mvnrepository.com/artifact/com.kazurayam/materialstore
-  myconf group: 'com.kazurayam', name: 'materialstore', version: '0.3.3'
+  myconf group: 'com.kazurayam', name: 'materialstore', version: '0.3.5'
 
   // https://mvnrepository.com/artifact/com.kazurayam/junit4ks
   myconf group: 'com.kazurayam', name: 'junit4ks', version: '1.6.1'
